@@ -1,0 +1,10 @@
+cmake_minimum_required(VERSION 3.10)
+
+project(sqlite3)
+set(SOURCE_FILES sqlite3.c shell.c)
+add_library(sqlite3 SHARED ${SOURCE_FILES})
+target_link_libraries(sqlite3 PRIVATE Threads::Threads ${CMAKE_DL_LIBS})
+set(THREADS_PREFER_PTHREAD_FLAG ON)
+find_package(Threads REQUIRED)
+set(CMAKE_CXX_COMPILER gcc)
+set(CMAKE_C_COMPILER gcc)
